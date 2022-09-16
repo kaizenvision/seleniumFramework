@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test(failed)">
     <classes>
+      <class name="com.myecom.testcases.SignInPageTest">
+        <methods>
+          <include name="signUp"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="readProp"/>
+          <include name="login"/>
+        </methods>
+      </class> <!-- com.myecom.testcases.SignInPageTest -->
       <class name="com.myecom.testcases.IndexPageTest">
         <methods>
           <include name="tearDown"/>
+          <include name="validateLogo"/>
+          <include name="validateSearchBoxClick"/>
           <include name="flushReport"/>
           <include name="generateExtentReport"/>
           <include name="readProp"/>
+          <include name="ValdateTiltle"/>
           <include name="validateSearchBoxText"/>
           <include name="setUp"/>
+          <include name="ClickOnSignIn"/>
         </methods>
       </class> <!-- com.myecom.testcases.IndexPageTest -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->
