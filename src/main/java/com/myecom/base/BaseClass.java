@@ -3,6 +3,7 @@ package com.myecom.base;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -37,6 +38,9 @@ public class BaseClass {
 		}
 		
 		driver.get(prop.getProperty("baseurl"));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofMillis(10000));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		
 		
 		if(driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Resource Limit Is Reached"))
 			driver.manage().window().maximize();
