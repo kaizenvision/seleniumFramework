@@ -38,14 +38,7 @@ public class BaseClass {
 		}
 		
 		driver.get(prop.getProperty("baseurl"));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofMillis(10000));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		
-		
-		if(driver.findElement(By.tagName("h1")).getText().equalsIgnoreCase("Resource Limit Is Reached"))
-			driver.manage().window().maximize();
-		else
-			driver.get(prop.getProperty("baseurl"));
 	}
 	
 	@BeforeTest
