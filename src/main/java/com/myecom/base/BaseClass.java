@@ -36,7 +36,6 @@ public class BaseClass {
 			System.setProperty("webdriver.edge.driver", projectPath+"//drivers//msedgedriver.exe");
 			driver = new EdgeDriver();
 		}
-		
 		driver.get(prop.getProperty("baseurl"));
 	}
 	

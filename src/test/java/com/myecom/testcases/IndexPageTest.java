@@ -109,7 +109,4 @@ public class IndexPageTest extends BaseClass {
 		String searchPageHeading = productListingPom.getSearchPageHeading();
 		Assert.assertEquals(searchPageHeading, "Search - My Store");
 	}
-	
-	
-
 }
