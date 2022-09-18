@@ -38,7 +38,6 @@ public class BaseClass {
 		}
 		
 		driver.get(prop.getProperty("baseurl"));
-		
 	}
 	
 	@BeforeTest
