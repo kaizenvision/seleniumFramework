@@ -49,11 +49,11 @@ public class ExcelSheetHandle extends BaseClass {
 			
 			for(int j=0; j<col; j++) {
 				
-				if(sh.getRow(i).getCell(j).getCellType().name().equals("STRING")) {
+				if(sh.getRow(i+1).getCell(j).getCellType().name().equals("STRING")) {
 					data.put(sh.getRow(0).getCell(j).getStringCellValue(), 
 							sh.getRow(i+1).getCell(j).getStringCellValue());
 				}
-				else if(sh.getRow(i).getCell(j).getCellType().name().equals("NUMERIC")) {
+				else if(sh.getRow(i+1).getCell(j).getCellType().name().equals("NUMERIC")) {
 					data.put(sh.getRow(0).getCell(j).getStringCellValue(), 
 							sh.getRow(i+1).getCell(j).getNumericCellValue());
 				}
