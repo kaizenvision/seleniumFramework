@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -45,10 +46,10 @@ public class IndexPageTest extends BaseClass {
 		extentReports.flush();
 	}
 	
+	
 	@BeforeMethod
 	public void setUp() {
 		loadAppication();
-		
 	}
 	
 	@AfterMethod
@@ -74,6 +75,7 @@ public class IndexPageTest extends BaseClass {
 		logger = extentReports.createTest("validateLogo");
 		indexPagePom = new IndexPagePom();
 		boolean res = indexPagePom.validateLogo();
+		logger.log(Status.INFO, "get validate logo res");
 		Assert.assertTrue(res);
 	}
 	
@@ -82,6 +84,7 @@ public class IndexPageTest extends BaseClass {
 		logger = extentReports.createTest("ValdateTiltle");
 		indexPagePom = new IndexPagePom();
 		String title = indexPagePom.getTitileOfPage();
+		logger.log(Status.INFO, title);
 		Assert.assertEquals(title, "My Store");
 	}
 	
