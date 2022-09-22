@@ -73,21 +73,20 @@ public class ExcelSheetHandle extends BaseClass {
 		return sh.getRow(row).getCell(col).getStringCellValue();
 	}
 	
-	public ArrayList getTestData(Sheet sh) {
+	public Object[][] getTestData(Sheet sh) {
 		int getRow = sh.getLastRowNum();
 		
-		ArrayList<Object[][]> data = new ArrayList<>();
-		
+		Object obj[][] = new Object[getRow][2];
 		for(int i=0; i<getRow; i++) {
 			int col = sh.getRow(i).getLastCellNum();
-			Object obj[][] = new Object[getRow][col];
-			for(int j=0; j<col; j++) {
-				
+			
+			for(int j=0; j<col;j++) {
+				System.out.println(i+" "+j+" "+sh.getRow(i+1).getCell(j).getStringCellValue());
 				obj[i][j] = sh.getRow(i+1).getCell(j).getStringCellValue();				
 			}
-			data.add(obj);
+				
 		}
-		System.out.println(data);
-		return data;
+	//	System.out.println(data);
+		return obj;
 	}
 }
