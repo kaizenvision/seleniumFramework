@@ -3,12 +3,14 @@ package com.myecom.testcases;
 
 import java.io.FileNotFoundException;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -34,11 +36,22 @@ public class SignInPageTest extends BaseClass {
 		driver.quit();
 	}
 	
-	@Test
-	public void login() throws FileNotFoundException, InterruptedException {
+	@DataProvider(name="logindata")
+	public Object[][] getTestData() {
+		Sheet sh = null;
+		try {
+			sh = data.getSheet(data.getExcelFile(), "login");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Object[][] logindata = data.getExcelSheetData(sh);
+		return logindata;
+	}
+	
+	@Test(dataProvider = "logindata")
+	public void login(HashMap<String,String> logindata) throws FileNotFoundException, InterruptedException {
 		//data.getSheet(fis,"login")
-		Sheet sh = data.getSheet(data.getExcelFile(), "login");
-		Map<String, Object> logindata = data.getExcelSheetData(sh);
 		indexPagePom = new IndexPagePom();
 		signInPagePom = indexPagePom.clickOnSignIn();
 		signInPagePom.setLoginText((String)logindata.get("username"), (String)logindata.get("password"));

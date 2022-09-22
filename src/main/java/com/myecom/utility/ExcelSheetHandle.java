@@ -3,10 +3,12 @@ package com.myecom.utility;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
@@ -37,14 +39,15 @@ public class ExcelSheetHandle extends BaseClass {
 		return sh;
 	}
 	
-	public Map<String, Object> getExcelSheetData(Sheet sh) {
+	public Object[][] getExcelSheetData(Sheet sh) {
 		
 		int getRow = sh.getLastRowNum();
 				
-		Map<String, Object> data = new HashMap<>();
+		
+		Object obj[][] = new Object[getRow][1];
 		
 		for(int i=0; i<getRow; i++) {
-			
+			Map<String, Object> data = new HashMap<>();
 			int col = sh.getRow(i).getLastCellNum();
 			
 			for(int j=0; j<col; j++) {
@@ -59,12 +62,32 @@ public class ExcelSheetHandle extends BaseClass {
 				}
 				
 			}
+			
+			obj[i][0]=data;
 		}
 		
-		return data;
+		return obj;
 	}
 	
 	public String getSingleStringVale(Sheet sh,int row, int col) {
 		return sh.getRow(row).getCell(col).getStringCellValue();
+	}
+	
+	public ArrayList getTestData(Sheet sh) {
+		int getRow = sh.getLastRowNum();
+		
+		ArrayList<Object[][]> data = new ArrayList<>();
+		
+		for(int i=0; i<getRow; i++) {
+			int col = sh.getRow(i).getLastCellNum();
+			Object obj[][] = new Object[getRow][col];
+			for(int j=0; j<col; j++) {
+				
+				obj[i][j] = sh.getRow(i+1).getCell(j).getStringCellValue();				
+			}
+			data.add(obj);
+		}
+		System.out.println(data);
+		return data;
 	}
 }
