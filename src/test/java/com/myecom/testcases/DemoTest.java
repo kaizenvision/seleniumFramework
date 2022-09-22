@@ -11,7 +11,6 @@ import org.testng.annotations.Test;
 import com.listner.MyListner;
 import com.myecom.base.BaseClass;
 
-
 @Listeners(MyListner.class)
 public class DemoTest extends BaseClass {
 	
